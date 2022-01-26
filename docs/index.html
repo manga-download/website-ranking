@@ -3,7 +3,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>HakuNeko Websites — Ranking of Estimated Views</title>
-        <link rel="icon" type="image/png" href="/favicon.png">
+        <link rel="icon" type="image/png" href="./favicon.png">
         <style>
             html, body {
                 font-family: sans-serif;
@@ -39,7 +39,7 @@
         </table>
         <script>
             async function render() {
-                const response = await fetch('/websites.json');
+                const response = await fetch('./websites.json');
                 const websites = await response.json();
                 for(let website of websites) {
                     website.analytics = website.analytics || {};
