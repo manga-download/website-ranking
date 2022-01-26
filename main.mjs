@@ -51,7 +51,7 @@ async function overwrite(userAgent) {
             website.analytics = {};
             console.warn('>', 'Failed:', error);
         }
-        await fs.writeJSON(path.join('.', 'docs', 'websites.json'), websites);
+        await fs.writeJSON(path.join('.', 'docs', 'websites.json'), websites, { spaces: 2 });
         await new Promise(resolve => setTimeout(resolve, 500));
     }
 }
@@ -74,7 +74,7 @@ async function update(userAgent) {
             website.analytics = {};
             console.warn('>', 'Failed:', error);
         }
-        await fs.writeJSON(path.join('.', 'docs', 'websites.json'), websites);
+        await fs.writeJSON(path.join('.', 'docs', 'websites.json'), websites, { spaces: 2 });
         await new Promise(resolve => setTimeout(resolve, 500));
     }
 }
