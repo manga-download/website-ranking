@@ -1,0 +1,59 @@
+<html lang="en">
+  <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HakuNeko Websites — Ranking of Estimated Views</title>
+        <link rel="icon" type="image/png" href="/favicon.png">
+        <style>
+            html, body {
+                font-family: sans-serif;
+            }
+            th, td {
+                padding: 0.25em;
+            }
+            th {
+                background-color: #C0D0F0;
+                text-align: left;
+                user-select: none;
+            }
+            td {
+                border-top: 1px solid lightgrey;
+            }
+            tr > td:last-of-type {
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="table">
+            <tr>
+                <th colspan="3">
+                    HakuNeko Websites — Ranking of Estimated Views (by <a href="https://www.similarweb.com/top-websites/category/arts-and-entertainment/animation-and-comics/" target="_blank">Similarweb</a> Traffic Analytics)
+                </th>
+            </tr>
+            <tr>
+                <th>#</th>
+                <th>Website</th>
+                <th>Views (monthly)</th>
+            </tr>
+        </table>
+        <script>
+            async function render() {
+                const response = await fetch('/websites.json');
+                const websites = await response.json();
+                for(let website of websites) {
+                    website.analytics = website.analytics || {};
+                    website.analytics.views = website.analytics.views || -1;
+                }
+                websites.sort((a, b) => b.analytics.views - a.analytics.views);
+                const table = document.getElementById('table');
+                for(let website of websites) {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `<td>${websites.indexOf(website) + 1}<td><a href="${website.url}" target="_blank" title="HakuNeko ID: ${website.id}">${website.title}</a></td><td>${website.analytics.views}</td>`;
+                    table.appendChild(row);
+                }
+            }
+            render();
+        </script>
+    </body>
+</html>

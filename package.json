@@ -1,0 +1,15 @@
+{
+  "main": "main.mjs",
+  "type": "module",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {
+    "fs-extra": "^10.0.0",
+    "node-fetch": "^3.2.0"
+  },
+  "scripts": {
+    "start": "node main.mjs",
+    "rankings": "node rankings.mjs"
+  }
+}
